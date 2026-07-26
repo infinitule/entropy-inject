@@ -1,0 +1,28 @@
+[project]
+name = "entropy-inject"
+version = "0.2.0"
+description = "Strip PDF metadata and replace it with a random entropy token bound to the file hash; owner keeps an encrypted local ledger."
+requires-python = ">=3.10"
+dependencies = [
+    "pikepdf>=8.0",
+    "pynacl>=1.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+]
+
+[project.scripts]
+entropy-inject = "entropy_inject.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["entropy_inject*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
